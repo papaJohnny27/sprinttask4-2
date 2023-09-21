@@ -27,14 +27,15 @@ public class UserServlet extends HttpServlet {
         for (User user : Database.getAllUser()){
             if(user.getEmail().equals(email) && user.getPassword().equals(password)){
                 userId = user.getId();
+                break;
             }
-
-            if (userId != null){
-                resp.sendRedirect("/user-details?userId=" + userId);
-                return;
-            }
-
-            resp.sendRedirect("/login?errorFlag=true");
         }
+
+        if (userId != null){
+            resp.sendRedirect("/user-details?userId=" + userId);
+            return;
+        }
+
+        resp.sendRedirect("/login?errorFlag=true");
     }
 }

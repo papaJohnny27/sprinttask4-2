@@ -81,7 +81,7 @@ public class Database {
     }
 
     public static User getByUserId(Integer id){
-        List<User> users = new ArrayList<>();
+        User user = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT * FROM users WHERE id = ?"
@@ -95,15 +95,16 @@ public class Database {
                 String password = resultSet.getString("password");
                 String fullName = resultSet.getString("full_name");
 
-                preparedStatement.close();
-                users.add(new User(userId,email,password,fullName));
+                user = new User(userId,email,password,fullName);
             }
 
             preparedStatement.close();
-            return null;
+            return user;
 
         }catch (Exception e){
-            System.out.println("Failed to get all users");
+            System.err.println("Error message: " + e.getMessage());
+            e.printStackTrace();
+            System.out.println("Failed to get user by email" + id );
             return null;
         }
 

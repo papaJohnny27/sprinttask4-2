@@ -51,7 +51,7 @@
                            <h5 class="card-title"><%=item.getName()%></h5>
                            <h6 class="card-subtitle">$<%=item.getPrice()%></h6>
                            <p class="card-text">ID: <%=item.getId()%><br><%=item.getDescription()%></p>
-                           <a href="#" class="btn btn-primary">Go somewhere</a>
+                           <a href="#" class="btn btn-success">BY NOW</a>
                        </div>
                    </div>
                </div>
